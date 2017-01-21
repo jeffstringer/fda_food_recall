@@ -14,14 +14,14 @@ gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do
-  gem 'byebug', platform: :mri
-  gem 'faker'
+  gem 'database_cleaner'
+  gem 'faker', '~> 1.7', '>= 1.7.2'
   gem 'pry-rails'
+  gem 'rspec-rails', '~> 3.4', '>= 3.4.2'
 end
 
 group :development do
   gem 'listen', '~> 3.0.5'
-  gem 'rspec-rails'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console'
