@@ -2,25 +2,27 @@ source 'https://rubygems.org'
 
 ruby '2.3.1'
 
-gem 'rails', '~> 5.0.1'
+gem 'activerecord-import', '~> 0.16.1'
+gem 'coffee-rails', '~> 4.2'
+gem 'jbuilder', '~> 2.5'
+gem 'jquery-rails'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.0'
 gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.2'
-gem 'jquery-rails'
+gem 'rails', '~> 5.0.1'
 gem 'turbolinks', '~> 5'
-gem 'jbuilder', '~> 2.5'
-gem 'activerecord-import', '~> 0.16.1'
+gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do
-  gem 'pry-rails'
   gem 'byebug', platform: :mri
+  gem 'faker'
+  gem 'pry-rails'
 end
 
 group :development do
-  gem 'web-console'
   gem 'listen', '~> 3.0.5'
+  gem 'rspec-rails'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'web-console'
 end
