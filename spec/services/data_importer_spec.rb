@@ -4,19 +4,17 @@ include FdaResponseData
 describe DataImporter do
   context 'no existing records' do
     it 'creates a company' do
-      expect{DataImporter.new([recall_json["recall"]])}.to change{Company.count}.by(1)
+      expect{DataImporter.new([recall_json])}.to change{Company.count}.by(1)
     end
 
     it 'creates a recall' do
-      expect{DataImporter.new([recall_json["recall"]])}.to change{Recall.count}.by(1)
+      expect{DataImporter.new([recall_json])}.to change{Recall.count}.by(1)
     end
 
     it 'only creates one company if there are multiple in the payload' do
       expect{
-        DataImporter.new(
-          [recall_json["recall"], recall_json["recall"]]
-        )
-      }.to change{Company.count}.by(1)
+              DataImporter.new([recall_json, recall_json])
+            }.to change{Company.count}.by(1)
     end
   end
 
@@ -27,11 +25,11 @@ describe DataImporter do
     end
 
     it 'creates a company' do
-      expect{DataImporter.new([recall_json["recall"]])}.to change{Company.count}.by(1)
+      expect{DataImporter.new([recall_json])}.to change{Company.count}.by(1)
     end
 
     it 'creates a recall' do
-      expect{DataImporter.new([recall_json["recall"]])}.to change{Recall.count}.by(1)
+      expect{DataImporter.new([recall_json])}.to change{Recall.count}.by(1)
     end
   end
 end
