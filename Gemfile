@@ -15,6 +15,7 @@ gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do
   gem 'database_cleaner'
+  gem 'factory_girl_rails', '~> 4.5'
   gem 'faker', '~> 1.7', '>= 1.7.2'
   gem 'pry-rails'
   gem 'rspec-rails', '~> 3.4', '>= 3.4.2'
