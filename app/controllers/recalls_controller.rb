@@ -19,12 +19,12 @@ class RecallsController < ApplicationController
   def recalls_params
     params.require(:_json).map do |json|
       json.require(:recall).
-        permit( :release_date,
-                :brand_name,
+        permit(
+                :company_release_link,
+                :name,
                 :product_description,
                 :reason,
-                :name,
-                :company_release_link
+                :release_date
               )
     end
   end

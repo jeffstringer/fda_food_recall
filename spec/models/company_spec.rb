@@ -11,8 +11,7 @@ describe Company do
     it 'only creates one company if there are multiple in the payload' do
       expect{
               Company.bulk_import([recall_json, recall_json])
-            }.
-      to change{Company.count}.by(1)
+            }.to change{Company.count}.by(1)
     end
   end
 end
