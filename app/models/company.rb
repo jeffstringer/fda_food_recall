@@ -7,9 +7,11 @@ class Company < ApplicationRecord
 
   class << self
     def bulk_import(payload)
-      payload.uniq! { |i| i["name"] }
+      payload.uniq! { |i| i["brand_name"] }
       companies = []
-      payload.each { |company| companies << Company.new(name: company["name"]) }
+      payload.each do |company|
+        companies << Company.new(name: company["brand_name"])
+      end
       Company.import companies
     end
   end

@@ -10,8 +10,8 @@ class DataImporter
   def process
     if Company.any? && Recall.any?
       restricted_recalls.each do |recall|
-        company = Company.find_or_create_by(name: recall["brand_name"])
-        company.recalls.create(recall.except("name", "brand_name"))
+        company = Company.find_or_create_by(name: recall["name"])
+        company.recalls.create(recall.except("name"))
       end
     else
       Company.bulk_import(payload)
