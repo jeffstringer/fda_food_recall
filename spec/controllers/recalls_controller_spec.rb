@@ -13,13 +13,24 @@ RSpec.describe RecallsController, :type => :controller  do
 
   describe "#create" do
     it 'redirects to index page' do
-      post :create, 
-        params: 
+      post :create,
+        params:
           {
            _json: [{"recall"=>recall_json}, {"recall"=>recall_json}]
           }
       expect(response.status).to eq(302)
       expect(response).to redirect_to(root_path)
+    end
+
+    it 'will only accept post from trusted source' do
+      ENV["SERVER_NAME"] = 'example.org'
+      post :create,
+        params:
+          {
+           _json: [{"recall"=>recall_json}, {"recall"=>recall_json}]
+          }
+      expect(request.server_name).to eq(ENV["SERVER_NAME"])
+      expect(response.status).to eq(302)
     end
   end
 end
