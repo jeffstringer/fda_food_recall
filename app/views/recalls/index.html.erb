@@ -1,5 +1,5 @@
 <% if @recalls.any? %>
-  <h1>Latest FDA Recalls</h1>
+  <h1 id="title">Latest FDA Recalls</h1>
   <% @recalls.each do |recall| %>
     <strong>Brand Name: </strong><%= (recall.company.name).html_safe %></br>
     <strong>Product Description: </strong><%= recall.product_description %></br>

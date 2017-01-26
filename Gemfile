@@ -13,6 +13,9 @@ gem 'rails', '~> 5.0.1'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
 
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'autoprefixer-rails'
+
 group :development, :test do
   gem 'database_cleaner'
   gem 'factory_girl_rails', '~> 4.5'
