@@ -9,9 +9,9 @@ class Recall < ApplicationRecord
     def bulk_import(payload)
       recalls = []
       payload.each do |recall|
-        company = Company.find_or_create_by(name: recall["name"])
+        company = Company.find_by(name: recall["name"])
         existing_recall = Recall.find_by(company_release_link: recall["company_release_link"])
-        unless existing_recall
+        if company && existing_recall.blank?
           recalls << company.recalls.build(recall.slice("release_date","product_description","reason","company_release_link"))
         end
       end
