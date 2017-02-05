@@ -8,12 +8,11 @@ class Recall < ApplicationRecord
   class << self
     def bulk_import(payload)
       recalls = []
+      companies = Hash[Company.pluck(:name, :id)]
       payload.each do |recall|
-        company = Company.find_by(name: recall["name"])
-        existing_recall = Recall.find_by(company_release_link: recall["company_release_link"])
-        if company && existing_recall.blank?
-          recalls << company.recalls.build(recall.slice("release_date","product_description","reason","company_release_link"))
-        end
+        recall = Recall.new(recall.slice("release_date","product_description","reason","company_release_link").
+            merge(company_id: companies[recall["name"]]))
+        recalls << recall
       end
       Recall.import recalls
     end
